@@ -1,18 +1,18 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
-const Login = ({ onLogin }) => {
+const Login = () => {
   const [form, setForm] = useState({ username: "", password: "" });
+  const navigate = useNavigate();
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) => 
+    setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (form.username === "admin" && form.password === "1234") {
-      onLogin();
-    } else {
-      alert("Invalid credentials. Try admin / 1234");
-    }
+    // Instead of authentication, just navigate to dashboard
+    navigate("/dashboard");
   };
 
   return (
